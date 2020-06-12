@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#loading {
+    font-size: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.info {
+    width: 50%;
+    background-color: black;
+    text-align: center;
+    color: white;
+    padding-top: 70px;
+}
+
+#profileImage {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+}
+
+#fullName {
+    font-size: 50px;
+    margin-top: 20px;
+}
+
+#profileBio {
+    font-size: 20px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+#githubLink {
+    margin-top: 30px;
+}
+
+#githubLink a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+#githubLink a:hover {
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+.projects {
+    padding-top: 50px;
+    padding-left: 50px;
+}
+
+.projects > h2 {
+    font-size: 40px;
+}
+
+#repos {
+    margin-top: 30px;
+}
+.repo {
+    border-bottom: 1px solid black;
+    width: 50%;
+    padding: 20px 0px;
+}
+
+.repo h2 a{
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+}
+.repo h2 a:hover {
+    text-decoration: underline;
+}
+
+.description {
+    padding-top: 10px;
+    font-size: 15px;
+    font-style: italic;
+}
+
+.timestamp {
+    padding-top: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.language {
+    padding-top: 10px;
+}
+.language span {
+    font-weight: bold;
+    color: red;
+}

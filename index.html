@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="loading">
+        Loading...
+    </div>
+
+    <div id="content" hidden>
+        <section class="info">
+            <img id="profileImage" alt="profileImage">
+            <h2 id="fullName"></h2>
+            <p id="profileBio"></p>
+            <p id="githubLink"></p>
+        </section>
+        <section  class="projects">
+            <h2>My Awesome Projects</h2>
+            <div id="repos">
+
+            </div>
+        </section>
+    </div>
+    
+
+    <script>
+
+        fetch("https://api.github.com/users/ayushAcharya96")
+        .then(response => response.json())
+        .then(function(data) {
+            console.log(data);
+            document.getElementById('profileImage').src = data['avatar_url'];
+            document.getElementById('fullName').innerHTML = data['name'];
+            document.getElementById('profileBio').innerHTML = data['bio'];
+            document.getElementById('githubLink').innerHTML = `<a href="${data['html_url']}">Check me out at github</a>`;
+
+
+
+            fetch(data['repos_url'])
+            .then(response => response.json())
+            .then(function(reposData) {
+                console.log(reposData);
+                console.log(reposData.length);
+                let repoNode = document.getElementById('repos');
+                reposData.forEach(element => {
+
+                    let repoName = element['name'];
+                    let repoCreated = element['created_at'];
+                    let repoLanguage = element['language'];
+                    let repoLink = element['svn_url'];
+                    let repoDescription = element['description'];
+                    let repo = document.createElement('div');
+                    repo.innerHTML = `
+                        <h2><a href="${repoLink}">${repoName}</a></h2>
+                        <p class="description">"${repoDescription}"</p>
+                        <p class="timestamp">Created At: ${repoCreated}</p>
+                        <p class="language">Language Used: <span>${repoLanguage}</span></p>
+                    `;
+                    repo.classList.add('repo');
+                    repoNode.appendChild(repo);
+
+                });
+            });
+        });
+
+
+        document.getElementById('loading').hidden = true;
+        document.getElementById('content').hidden = false;
+        document.getElementById('content').style.display = 'flex';
+
+    </script>
+</body>
+</html>
